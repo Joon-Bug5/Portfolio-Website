@@ -1,0 +1,320 @@
+*{
+  box-sizing: border-box;
+}
+
+:root{
+  --primary-color: #9ec8ff;
+  --secondary-color: #fbf719;
+  --solid-gray-color: #979797;
+}
+
+$primary-color: #9ec8ff;
+$primary-color-darker: darken($primary-color, 50%);
+$primary-color-lighter: lighten($primary-color, 25%);
+$red-hot-color:#ea0d01;
+$neon-green-color:#1fff0f;
+$aero-blue-color: rgba(197,251,240,0.5);
+$ultramarine-blue-color: rgba(50,90,245,0.7);
+$white-color: #fff;
+$ink-black-color: #06080f;
+$bluest-blue-color: #0a68ef;
+
+header{
+  font:{
+    weight: 700;
+    size: 18px;
+  }
+  line-height: 2;
+  background-color:$primary-color-darker;
+}
+
+.page-header{
+  display: flex;
+  width: 100%;
+  padding: 20px;
+
+  &__item{
+    flex: 0 1 175px;
+  }
+
+  &__item:last-child{
+    flex-grow: 1;
+    text-align: right;
+  }
+}
+
+.navigation-list{
+  list-style: none;
+
+  li{
+    display: inline-block;
+    margin-left: 15px;
+  }
+
+  &__item{
+    text-decoration: none;
+  }
+}
+
+body{
+  background-color: var(--primary-color);
+  font:{
+    family: 'Roboto Condensed', sans-serif;
+    size: 16px;
+    weight: 300;
+  }
+  line-height: 1.6;
+}
+
+h1{
+  font:{
+    size: 50px;
+    weight: 600;
+    variant: small-caps;
+  }
+}
+
+.find-me{
+  text-decoration: overline;
+}
+
+p{
+  font:{
+    size: 20px;
+    weight: 300;
+  }
+}
+
+footer{
+  font:{
+    size: 15px;
+    weight: 700;
+  }
+}
+
+a{
+  &:visited{
+    color:$red-hot-color;
+  }
+
+  &:hover,&:focus{
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+  &:active{
+    color:$neon-green-color;
+  }
+}
+
+.message_box{
+  background-color: $aero-blue-color;
+}
+
+.email_box{
+  background-color: $aero-blue-color;
+}
+
+%button-shared{
+  border: none;
+  display: inline-block;
+  font:{
+    family: inherit;
+    weight: 700;
+  }
+  background-color: $ultramarine-blue-color;
+  color: $white-color;
+  text-decoration: underline;
+  padding: 15px;
+  border:{
+    radius: 5px;
+    bottom: 3px solid $ink-black-color;
+  }
+  transition: .5s opacity;
+  &:hover,&:focus{
+    curser: pointer;
+    opacity:0.5;
+    box-shadow: 10px;
+  }
+}
+
+button, .button{
+  @extend %button-shared;
+}
+
+.button{
+  @extend %button-shared;
+  background-color:$ink-black-color;
+  box-shadow: none;
+}
+
+.profile{
+  max-width: 700px;
+  margin: 0 auto;
+
+  &__portrait{
+    float: left;
+    width: 250px;
+    height: auto;
+    margin-right: 25px;
+    border-radius: 50%;
+  }
+}
+
+.introduction__paragraph{
+  text-align: left;
+  padding: 20px;
+}
+
+.page-footer{
+  clear: both;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.project-list{
+  display: grid;
+  grid:{
+    template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  &__item{
+    background-color: var(--dark-grey);
+    padding: 15px;
+  }
+  &__item:first-child{
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
+}
+
+.self-title{
+  display: grid;
+  text-align: center;
+}
+
+h2{
+  font-size: 30px;
+}
+.self-list{
+  list-style: none;
+
+  &__item{
+    font:{
+      size: 25px;
+      weight: 500;
+    }
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+  }
+}
+
+.skill-list{
+  display: flex;
+  justify-content: center;
+}
+
+.resume{
+  display: flex;
+  justify-content: center;
+}
+
+.contact-list{
+  text-align: center;
+}
+
+.message-list{
+  display: flex;
+  justify-content: center;
+
+  &__item{
+    padding: 10px;
+  }
+}
+
+.chicago{
+  text-align: center;
+  padding: 15px;
+
+  &-word{
+    animation: 4s color-change infinite alternate linear;
+  }
+}
+
+@keyframes color-change{
+  0%{
+    fill: $ink-black-color;
+  }
+  50%{
+    fill: $bluest-blue-color;
+  }
+  100%{
+    fill: $red-hot-color;
+  }
+}
+
+@keyframes net-move{
+  0%{
+    transform: translate(-35px, 0);
+  }
+  25%{
+    transform: translate(40px, 0);
+  }
+  50%{
+    transform: translate(40px, 35px);
+  }
+  75%{
+    transform: translate(-35px, 35px);
+  }
+  100%{
+    transform: translate(-35px, 0);
+  }
+}
+
+.net{
+  animation: net-move 7s infinite linear;
+}
+
+@media all and (max-width: 500px){
+  .project-list{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media all and (mix-width: 500px) and (max-width: 750px){
+  .project-list{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media all and (max-width: 750px){
+  .project-list{
+    grid-gap: 10px;
+
+    &__item:first-child{
+      grid:{
+        column: auto / auto;
+        row: auto / auto;
+      }
+    }
+  }
+
+  h1{
+    font-size: 22px;
+  }
+
+  h2{
+    font-size: 15px;
+  }
+
+  p{
+    font-size: 10px;
+  }
+
+  .self-list__item{
+    font-size: 15px;
+  }
+}
